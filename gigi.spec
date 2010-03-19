@@ -24,7 +24,7 @@ BuildRequires:	boost-devel >= 1.37
 BuildRequires:	ogre-devel >= 1.4.6
 BuildRequires:	scons
 BuildRequires:	SDL-devel
-BuildRequires:	jpeg7-devel
+BuildRequires:	jpeg8-devel
 BuildRequires:	ois-devel
 #Obsoletes:	%{name} < %{version}-%{release}
 #Obsoletes:	%{develname} < %{version}-%{release}
