@@ -1,7 +1,7 @@
 ###### Predefinitions #####
 %define name		gigi
 %define oname		GG
-%define revision	803
+%define revision	804
 %define version		0.7.0
 %define release		%mkrel 0.svn%{revision}.1
 %define libname		%mklibname %name 0
@@ -72,7 +72,6 @@ for OpenGL.
 %patch0 -p0
 
 %build
-#configure_scons use_devil=1 build_tutorials=no --install=%{buildroot}
 # Unless things evolves otherwise, DeVIL is not necessary...
 %configure_scons use_devil=0 build_tutorials=no --install=%{buildroot}
 %scons
