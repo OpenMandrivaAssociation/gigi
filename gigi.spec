@@ -1,7 +1,7 @@
 ###### Predefinitions #####
 %define name		gigi
 %define oname		GG
-%define revision	804
+%define revision	811
 %define version		0.7.0
 %define release		%mkrel 0.svn%{revision}.1
 %define libname		%mklibname %name 0
