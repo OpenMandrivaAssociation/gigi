@@ -1,7 +1,7 @@
 ###### Predefinitions #####
 %define name		gigi
 %define oname		GG
-%define revision	811
+%define revision	812
 %define version		0.7.0
 %define release		%mkrel 0.svn%{revision}.1
 %define libname		%mklibname %name 0
@@ -12,7 +12,7 @@ Summary:	A GUI library for OpenGL
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{name}-%{version}-0.svn%{revision}.tar.lzma
+Source0:	%{name}-%{version}.%{revision}svn.tar.lzma
 Patch0:		%{name}-%{version}-symlink-fix.patch
 License:	LGPLv2.1
 Group:		System/Libraries
