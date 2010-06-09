@@ -109,5 +109,6 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/pkgconfig/GiGi*
-%dir %{_includedir}/GG
-%{_includedir}/GG/*
+%dir %{_includedir}/%{oname}
+%{_includedir}/%{oname}/*
+%attr(644,root,root) %{_includedir}/%{oname}/EveGlue.h
