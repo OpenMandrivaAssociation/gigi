@@ -3,7 +3,7 @@
 %define oname		GG
 %define revision	812
 %define version		0.7.0
-%define release		%mkrel 0.1.%{revision}
+%define release		%mkrel 0.2.%{revision}
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 
