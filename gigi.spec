@@ -1,9 +1,9 @@
 ###### Predefinitions #####
 %define name		gigi
 %define oname		GG
-%define revision	812
+%define revision	813
 %define version		0.7.0
-%define release		%mkrel 0.2.%{revision}
+%define release		%mkrel 0.3.%{revision}
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 
@@ -14,7 +14,8 @@ Version:	%{version}
 Release:	%{release}
 Source0:	%{name}-%{version}.%{revision}svn.tar.lzma
 Patch0:		%{name}-%{version}-symlink-fix.patch
-License:	LGPLv2.1
+Patch1:		%{name}-%{version}.813-clr-fix.patch
+License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
@@ -26,6 +27,7 @@ BuildRequires:	scons
 BuildRequires:	SDL-devel
 BuildRequires:	jpeg8-devel
 BuildRequires:	ois-devel
+BuildRequires:	libtool-devel
 #Obsoletes:	%{name} < %{version}-%{release}
 #Obsoletes:	%{develname} < %{version}-%{release}
 
@@ -70,6 +72,7 @@ for OpenGL.
 %prep
 %setup -q -n %{oname}
 %patch0 -p0
+%patch1 -p0
 
 %build
 # Unless things evolves otherwise, DeVIL is not necessary...
