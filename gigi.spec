@@ -22,6 +22,7 @@ BuildRequires:	jpeg8-devel
 BuildRequires:	ois-devel
 BuildRequires:	libtool-devel
 BuildRequires:	cmake
+BuildRequires:	doxygen
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
