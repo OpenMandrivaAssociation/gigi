@@ -17,11 +17,11 @@ Source0:	%{name}-%{revision}.tar.gz
 BuildRequires:	freetype2-devel 
 BuildRequires:	boost-devel >= 1.37
 BuildRequires:	ogre-devel >= 1.4.6
-BuildRequires:	scons
 BuildRequires:	SDL-devel
 BuildRequires:	jpeg8-devel
 BuildRequires:	ois-devel
 BuildRequires:	libtool-devel
+BuildRequires:	cmake
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
