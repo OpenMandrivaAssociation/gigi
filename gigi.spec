@@ -61,8 +61,6 @@ for OpenGL.
 %build
 # for a strange reason, the -g flag triggers a segfault in cpp
 # https://qa.mandriva.com/show_bug.cgi?id=62558
-# moreover, the %cmake macro force the use of -DCMAKE_BUILD_TYPE=release
-# triggering the usage of -O3 -DNDEBUG,
 export CFLAGS="$(echo %{optflags} | sed -e s/-g//)"
 export CXXFLAGS="$(echo %{optflags} | sed -e s/-g//)"
 %cmake
