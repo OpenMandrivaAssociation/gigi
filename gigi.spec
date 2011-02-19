@@ -1,7 +1,7 @@
 %define name		gigi
 %define revision	938
 %define version		0.8.0
-%define release		%mkrel 2
+%define release		%mkrel 3
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 %define _disable_ld_no_undefined 1
@@ -78,8 +78,8 @@ for lib in *.so; do
 done
 popd
 
-install -d -m 755 %{buildroot}%{_datadir}/cmake/GG
-install -m 644 cmake/*.cmake %{buildroot}%{_datadir}/cmake/GG
+install -d -m 755 %{buildroot}%{_datadir}/cmake/GG/Modules
+install -m 644 cmake/*.cmake %{buildroot}%{_datadir}/cmake/Modules/GG
 
 # move documentation to the correct place
 install -d -m 755 %{buildroot}%{_docdir}/%{name}
@@ -103,5 +103,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}/GG
 %{_libdir}/pkgconfig/GiGi*
-%{_datadir}/cmake/GG
+%{_datadir}/cmake/Modules/GG
 %{_includedir}/GG
