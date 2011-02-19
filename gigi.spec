@@ -103,5 +103,5 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}/GG
 %{_libdir}/pkgconfig/GiGi*
-%{_datadir}/cmake/GiGi
+%{_datadir}/cmake/GG
 %{_includedir}/GG
