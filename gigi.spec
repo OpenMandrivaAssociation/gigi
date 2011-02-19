@@ -78,7 +78,7 @@ for lib in *.so; do
 done
 popd
 
-install -d -m 755 %{buildroot}%{_datadir}/cmake/GG/Modules
+install -d -m 755 %{buildroot}%{_datadir}/cmake/Modules/GG
 install -m 644 cmake/*.cmake %{buildroot}%{_datadir}/cmake/Modules/GG
 
 # move documentation to the correct place
