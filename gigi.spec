@@ -4,7 +4,6 @@
 %define release		%mkrel 4
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
-%define _disable_ld_no_undefined 1
 
 Summary:	A GUI library for OpenGL
 Name:		%{name}
@@ -14,6 +13,7 @@ License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
 Source0:	%{name}-%{revision}.tar.gz
+Patch0:		gigi-938-link.patch
 BuildRequires:	freetype2-devel 
 BuildRequires:	boost-devel >= 1.37
 BuildRequires:	ogre-devel >= 1.4.6
@@ -50,7 +50,8 @@ should you decide to do so.
 Summary:	Development headers for GiGi
 Group:		System/Libraries
 Provides:	%{name}-devel = %{version}-%{release}
-Requires:   %{libname} = %{version}-%{release}
+Requires:       %{libname} = %{version}-%{release}
+Conflicts:	%{libname} < %{version}-%{release}
 
 %description -n %{develname}
 Development headers and includes for GiGi (aka GG),  a GUI library 
@@ -58,6 +59,7 @@ for OpenGL.
 
 %prep
 %setup -q -n GG
+%patch0 -p0
 
 %build
 # for a strange reason, the -g flag triggers a segfault in cpp
@@ -97,11 +99,12 @@ rm -rf %{buildroot}
 %files -n %{libname}
 %doc README COPYING INSTALLING PACKAGING
 %defattr(-,root,root)
-%{_libdir}/libGiGi*
+%{_libdir}/libGiGi*.so.*
 
 %files -n %{develname}
 %defattr(-,root,root)
 %doc %{_docdir}/%{name}/GG
+%{_libdir}/libGiGi*.so
 %{_libdir}/pkgconfig/GiGi*
 %{_datadir}/cmake/Modules/GG
 %{_includedir}/GG
