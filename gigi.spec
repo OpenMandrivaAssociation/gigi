@@ -1,7 +1,7 @@
 %define name		gigi
 %define revision	938
 %define version		0.8.0
-%define release		%mkrel 3
+%define release		%mkrel 4
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 %define _disable_ld_no_undefined 1
