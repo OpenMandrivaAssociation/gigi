@@ -1,7 +1,7 @@
 %define name		gigi
 %define revision	938
 %define version		0.8.0
-%define release		%mkrel 4
+%define release		%mkrel 5
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 
@@ -62,10 +62,6 @@ for OpenGL.
 %patch0 -p0
 
 %build
-# for a strange reason, the -g flag triggers a segfault in cpp
-# https://qa.mandriva.com/show_bug.cgi?id=62558
-export CFLAGS="$(echo %{optflags} | sed -e s/-g//)"
-export CXXFLAGS="$(echo %{optflags} | sed -e s/-g//)"
 %cmake
 %make
 
