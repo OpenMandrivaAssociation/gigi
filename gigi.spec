@@ -1,7 +1,7 @@
 %define name		gigi
 %define revision	938
 %define version		0.8.0
-%define release		%mkrel 5
+%define release		%mkrel 6
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 
