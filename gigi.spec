@@ -64,8 +64,8 @@ for OpenGL.
 %build
 # for a strange reason, the -g flag triggers a segfault in cpp
 # https://qa.mandriva.com/show_bug.cgi?id=62558
-export CFLAGS="$(echo %{optflags} | sed -e s/-g//)"
-export CXXFLAGS="$(echo %{optflags} | sed -e s/-g//)"
+export CFLAGS="$(echo %{optflags}  -DBOOST_FILESYSTEM_VERSION=2 | sed -e s/-g//)"
+export CXXFLAGS="$(echo %{optflags}  -DBOOST_FILESYSTEM_VERSION=2 | sed -e s/-g//)"
 %cmake
 %make
 
