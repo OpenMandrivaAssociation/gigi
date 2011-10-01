@@ -1,7 +1,7 @@
 %define name		gigi
-%define revision	938
+%define revision	1044
 %define version		0.8.0
-%define release		%mkrel 6
+%define release		%mkrel 7
 %define libname		%mklibname %name 0
 %define develname	%mklibname %name -d
 
@@ -12,13 +12,13 @@ Release:	%{release}
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
-Source0:	%{name}-%{revision}.tar.gz
+Source0:	%{name}-%{revision}.tar.xz
 Patch0:		gigi-938-link.patch
 BuildRequires:	freetype2-devel 
 BuildRequires:	boost-devel >= 1.37
 BuildRequires:	ogre-devel >= 1.4.6
 BuildRequires:	SDL-devel
-BuildRequires:	jpeg8-devel
+BuildRequires:	jpeg-devel
 BuildRequires:	ois-devel
 BuildRequires:	libtool-devel
 BuildRequires:	cmake
@@ -50,7 +50,7 @@ should you decide to do so.
 Summary:	Development headers for GiGi
 Group:		System/Libraries
 Provides:	%{name}-devel = %{version}-%{release}
-Requires:       %{libname} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Conflicts:	%{libname} < %{version}-%{release}
 
 %description -n %{develname}
@@ -90,19 +90,14 @@ mv %{buildroot}%{_prefix}/doc/GG %{buildroot}%{_docdir}/%{name}
 %clean
 rm -rf %{buildroot}
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
 ##### Files #####
 %files -n %{libname}
+%defattr(0644,root,root,0755)
 %doc README COPYING INSTALLING PACKAGING
-%defattr(-,root,root)
 %{_libdir}/libGiGi*.so.*
 
 %files -n %{develname}
-%defattr(-,root,root)
+%defattr(0644,root,root,0755)
 %doc %{_docdir}/%{name}/GG
 %{_libdir}/libGiGi*.so
 %{_libdir}/pkgconfig/GiGi*
