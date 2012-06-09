@@ -1,26 +1,32 @@
-%define revision	1044
-%define libname		%mklibname %{name} 0
-%define develname	%mklibname %{name} -d
+%define svnrev	1074
+%define major	0
+%define libname	%mklibname %{name} %{major}
+%define devname	%mklibname %{name} -d
 
 Summary:	A GUI library for OpenGL
 Name:		gigi
 Version:	0.8.0
-Release:	7
+Release:	7.%{svnrev}.1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
-Source0:	%{name}-%{revision}.tar.xz
+Source0:	%{name}-%{svnrev}.tar.xz
 Patch0:		gigi-938-link.patch
+#from https://build.opensuse.org/package/files?package=gigi&project=home%3Adbuck
+Patch1:		gigi-vector.patch
+Patch2:		gigi-adobe-cmath.patch
+Patch3:		gigi-cmake-tests.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
-BuildRequires:	freetype2-devel 
-BuildRequires:	boost-devel >= 1.37
-BuildRequires:	ogre-devel >= 1.4.6
-BuildRequires:	SDL-devel
+BuildRequires:	boost-devel
 BuildRequires:	jpeg-devel
-BuildRequires:	ois-devel
 BuildRequires:	libtool-devel
+BuildRequires:	tiff-devel
+BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(OGRE)
+BuildRequires:	pkgconfig(OIS)
+BuildRequires:	pkgconfig(sdl)
 
 %description
 GiGi (aka GG) is a GUI library for OpenGL. It is platform-independent 
@@ -36,33 +42,26 @@ Group:		System/Libraries
 Provides:	%{name} = %{version}-%{release}
 
 %description -n %{libname}
-GiGi (aka GG) is a GUI library for OpenGL. It is platform-independent 
-(it runs at least on Linux and Windows, and probably more), 
-compiler-independent (it compiles under at GCC 3.2 or higher and MSVC++ 7.1 
-or higher, and probably more), and driver-independent. A reference driver 
-for SDL is provided, and it is straightforward to write one for yourself 
-should you decide to do so.
+This package contains the shared libraries for GiGi (aka GG), a GUI library
+for OpenGL.
 
-%package -n 	%{develname}
+%package -n 	%{devname}
 Summary:	Development headers for GiGi
 Group:		System/Libraries
 Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 Development headers and includes for GiGi (aka GG),  a GUI library 
 for OpenGL. 
 
 %prep
-%setup -q -n GG
-%patch0 -p0
+%setup -qn GG
+%apply_patches
 
 %build
-# for a strange reason, the -g flag triggers a segfault in cpp
-# https://qa.mandriva.com/show_bug.cgi?id=62558
-export CFLAGS="$(echo %{optflags}  -DBOOST_FILESYSTEM_VERSION=2 | sed -e s/-g//)"
-export CXXFLAGS="$(echo %{optflags}  -DBOOST_FILESYSTEM_VERSION=2 | sed -e s/-g//)"
 %cmake
+
 %make
 
 %install
@@ -84,9 +83,9 @@ mv %{buildroot}%{_prefix}/doc/GG %{buildroot}%{_docdir}/%{name}
 
 %files -n %{libname}
 %doc README COPYING INSTALLING PACKAGING
-%{_libdir}/libGiGi*.so.*
+%{_libdir}/libGiGi*.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %doc %{_docdir}/%{name}/GG
 %{_libdir}/libGiGi*.so
 %{_libdir}/pkgconfig/GiGi*
