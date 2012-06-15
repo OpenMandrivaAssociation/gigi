@@ -6,7 +6,7 @@
 Summary:	A GUI library for OpenGL
 Name:		gigi
 Version:	0.8.0
-Release:	7.%{svnrev}.1
+Release:	8.%{svnrev}.1
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
