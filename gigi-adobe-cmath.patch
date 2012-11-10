@@ -1,0 +1,11 @@
+--- a/GG/adobe/cmath.hpp.orig	2012-06-01 23:48:18.394142365 -0600
++++ b/GG/adobe/cmath.hpp	2012-06-01 23:53:19.345185206 -0600
+@@ -37,7 +37,7 @@ back to include math.h. This also needs
+ 
+ #define ADOBE_HAS_CPP_CMATH 
+ 
+-#elif ((__GNUC__ == 4) && (__GNUC_MINOR__ <= 6))
++#elif ((__GNUC__ == 4) && (__GNUC_MINOR__ <= 999))
+ /*
+     The currently supported version of GNUC has C99 extensions in math.h. But no TR1 extensions.
+ */

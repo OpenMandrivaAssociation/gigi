@@ -1,0 +1,10 @@
+--- ./src/CMakeLists.txt.link	2011-02-27 16:44:31.000000000 +0100
++++ ./src/CMakeLists.txt	2011-02-27 16:45:15.000000000 +0100
+@@ -211,6 +211,7 @@
+ endif ()
+ 
+ if (UNIX)
++    target_link_libraries(GiGi dl)
+     get_pkg_config_libs(pkg_config_libs ${THIS_LIB_LINK_LIBS})
+     configure_file(
+         ${CMAKE_HOME_DIRECTORY}/cmake/GiGi.pc.in
