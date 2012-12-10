@@ -1,4 +1,6 @@
-%define svnrev	1074
+# 20120910 is from FreeOrion source tree
+%define svnrev	20120910
+
 %define major	0
 %define libname	%mklibname %{name} %{major}
 %define devname	%mklibname %{name} -d
@@ -6,16 +8,12 @@
 Summary:	A GUI library for OpenGL
 Name:		gigi
 Version:	0.8.0
-Release:	8.%{svnrev}.1
+Release:	8.%{svnrev}.3
 License:	LGPLv2+
 Group:		System/Libraries
 URL:		http://gigi.sourceforge.net/
 Source0:	%{name}-%{svnrev}.tar.xz
 Patch0:		gigi-938-link.patch
-#from https://build.opensuse.org/package/files?package=gigi&project=home%3Adbuck
-Patch1:		gigi-vector.patch
-Patch2:		gigi-adobe-cmath.patch
-Patch3:		gigi-cmake-tests.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -24,6 +22,9 @@ BuildRequires:	jpeg-devel
 BuildRequires:	libtool-devel
 BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(freetype2)
+BuildRequires:	pkgconfig(gl)
+BuildRequires:	pkgconfig(glu)
+BuildRequires:	pkgconfig(libpng)
 BuildRequires:	pkgconfig(OGRE)
 BuildRequires:	pkgconfig(OIS)
 BuildRequires:	pkgconfig(sdl)
@@ -52,17 +53,18 @@ Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 
 %description -n %{devname}
-Development headers and includes for GiGi (aka GG),  a GUI library 
-for OpenGL. 
+Development headers and includes for GiGi (aka GG), a GUI library
+for OpenGL.
 
 %prep
 %setup -qn GG
 %apply_patches
 
 %build
-%cmake
-
-%make
+# System resource usage is extremely high so disable extra flags and parallel build
+%global optflags -O2
+%cmake -DBUILD_DEBUG:BOON=ON
+make VERBOSE=1
 
 %install
 %makeinstall_std -C build
@@ -82,7 +84,6 @@ install -d -m 755 %{buildroot}%{_docdir}/%{name}
 mv %{buildroot}%{_prefix}/doc/GG %{buildroot}%{_docdir}/%{name}
 
 %files -n %{libname}
-%doc README COPYING INSTALLING PACKAGING
 %{_libdir}/libGiGi*.so.%{major}*
 
 %files -n %{devname}
