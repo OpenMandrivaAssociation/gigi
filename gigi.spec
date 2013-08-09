@@ -17,7 +17,7 @@
 Summary:	A GUI library for OpenGL
 Name:		gigi
 Version:	0.8.0
-Release:	8.%{svnrev}.2
+Release:	8.%{svnrev}.3
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gigi.sourceforge.net/
@@ -52,7 +52,7 @@ should you decide to do so.
 %package -n 	%{libname}
 Summary:	A GUI library for OpenGL
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
+Provides:	%{name} = %{EVRD}
 Conflicts:	%{_lib}gigi0 < %{EVRD}
 Obsoletes:	%{_lib}gigi0 < %{EVRD}
 
@@ -68,7 +68,6 @@ for OpenGL.
 %package -n 	%{libggogre}
 Summary:	A GUI library for OpenGL (OGRE)
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
 Conflicts:	%{_lib}gigi0 < %{EVRD}
 
 %description -n %{libggogre}
@@ -83,7 +82,6 @@ for OpenGL.
 %package -n 	%{libggois}
 Summary:	A GUI library for OpenGL (OGRE OIS plugin)
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
 Conflicts:	%{_lib}gigi0 < %{EVRD}
 
 %description -n %{libggois}
@@ -98,7 +96,6 @@ for OpenGL.
 %package -n 	%{libggsdl}
 Summary:	A GUI library for OpenGL (SDL)
 Group:		System/Libraries
-Provides:	%{name} = %{version}-%{release}
 Conflicts:	%{_lib}gigi0 < %{EVRD}
 
 %description -n %{libggsdl}
@@ -113,9 +110,12 @@ for OpenGL.
 %package -n 	%{devname}
 Summary:	Development headers for GiGi
 Group:		System/Libraries
-Provides:	%{name}-devel = %{version}-%{release}
-Provides:	%{oname}-devel = %{version}-%{release}
-Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{EVRD}
+Provides:	%{oname}-devel = %{EVRD}
+Requires:	%{libname} = %{EVRD}
+Requires:	%{libggogre} = %{EVRD}
+Requires:	%{libggois} = %{EVRD}
+Requires:	%{libggsdl} = %{EVRD}
 Conflicts:	%{_lib}gigi-devel < %{EVRD}
 %rename		%{_lib}gigi-devel
 
