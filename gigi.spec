@@ -17,7 +17,7 @@
 Summary:	A GUI library for OpenGL
 Name:		gigi
 Version:	0.8.0
-Release:	8.%{svnrev}.1
+Release:	8.%{svnrev}.2
 License:	LGPLv2+
 Group:		System/Libraries
 Url:		http://gigi.sourceforge.net/
@@ -114,9 +114,10 @@ for OpenGL.
 Summary:	Development headers for GiGi
 Group:		System/Libraries
 Provides:	%{name}-devel = %{version}-%{release}
+Provides:	%{oname}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
 Conflicts:	%{_lib}gigi-devel < %{EVRD}
-Obsoletes:	%{_lib}gigi-devel < %{EVRD}
+%rename		%{_lib}gigi-devel
 
 %description -n %{devname}
 Development headers and includes for GiGi (aka GG), a GUI library
