@@ -1,0 +1,64 @@
+diff -urN GG/src/CMakeLists.txt GG-patched/src/CMakeLists.txt
+--- GG/src/CMakeLists.txt	2013-06-15 01:12:22.000000000 +1100
++++ GG-patched/src/CMakeLists.txt	2013-08-10 01:13:17.615377605 +1100
+@@ -199,6 +199,12 @@
+     ${GiGi_Plugin_SOURCES}
+ )
+ 
++set_target_properties(GiGi
++    PROPERTIES
++    VERSION 0.8.0
++    SOVERSION 0
++)
++
+ if (USE_STATIC_LIBS)
+     set_target_properties(GiGi
+         PROPERTIES
+diff -urN GG/src/Ogre/CMakeLists.txt GG-patched/src/Ogre/CMakeLists.txt
+--- GG/src/Ogre/CMakeLists.txt	2013-05-10 16:42:54.000000000 +1100
++++ GG-patched/src/Ogre/CMakeLists.txt	2013-08-10 01:07:05.329156208 +1100
+@@ -24,6 +24,12 @@
+ 
+     add_library(GiGiOgre OgreGUI.cpp)
+ 
++    set_target_properties(GiGiOgre
++        PROPERTIES
++        VERSION 0.8.0
++        SOVERSION 0
++    )
++
+     if (USE_STATIC_LIBS)
+         set_target_properties(GiGiOgre
+             PROPERTIES
+diff -urN GG/src/Ogre/Plugins/CMakeLists.txt GG-patched/src/Ogre/Plugins/CMakeLists.txt
+--- GG/src/Ogre/Plugins/CMakeLists.txt	2013-06-21 05:54:34.000000000 +1100
++++ GG-patched/src/Ogre/Plugins/CMakeLists.txt	2013-08-10 01:12:42.854719496 +1100
+@@ -20,6 +20,12 @@
+         OISInput.cpp
+     )
+ 
++    set_target_properties(GiGiOgrePlugin_OIS
++        PROPERTIES
++        VERSION 0.8.0
++        SOVERSION 0
++    )
++
+     if (USE_STATIC_LIBS)
+         set_target_properties(GiGiOgrePlugin_OIS
+             PROPERTIES
+diff -urN GG/src/SDL/CMakeLists.txt GG-patched/src/SDL/CMakeLists.txt
+--- GG/src/SDL/CMakeLists.txt	2013-05-10 16:42:54.000000000 +1100
++++ GG-patched/src/SDL/CMakeLists.txt	2013-08-10 01:13:34.111619933 +1100
+@@ -19,6 +19,12 @@
+     set(GiGiSDL_LINK_LIBS GiGi ${SDL_LIBRARY})
+     add_library(GiGiSDL SDLGUI.cpp)
+ 
++    set_target_properties(GiGiSDL
++        PROPERTIES
++        VERSION 0.8.0
++        SOVERSION 0
++    )
++
+     if (USE_STATIC_LIBS)
+         set_target_properties(GiGiSDL
+             PROPERTIES
