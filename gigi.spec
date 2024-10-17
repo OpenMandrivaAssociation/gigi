@@ -20,7 +20,7 @@ Version:	0.8.0
 Release:	8.%{svnrev}.3
 License:	LGPLv2+
 Group:		System/Libraries
-Url:		http://gigi.sourceforge.net/
+Url:		https://gigi.sourceforge.net/
 Source0:	%{name}-%{svnrev}.tar.xz
 Patch0:		gigi-20130806-link.patch
 Patch1:		gigi-20130806-soversion.patch
